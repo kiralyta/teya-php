@@ -6,17 +6,19 @@ use Kiralyta\TeyaPhp\Exceptions\TeyaClientException;
 use Kiralyta\TeyaPhp\Teya;
 use Kiralyta\TeyaPhp\TeyaClient;
 
-class StoreTest extends TestCase
+class TerminalTest extends TestCase
 {
-    public function test_list_store(): void
+    public function test_list_terminal(): void
     {
         // $this->expectException(TeyaClientException::class);
 
-        $stores = Teya::message(
+        $terminals = Teya::message(
             new TeyaClient(testing: true),
             $this->accessToken
-        )->stores();
+        )->terminals(
+            $this->storeId
+        );
 
-        $this->assertIsArray($stores);
+        $this->assertIsArray($terminals);
     }
 }

@@ -6,17 +6,21 @@ use Kiralyta\TeyaPhp\Exceptions\TeyaClientException;
 use Kiralyta\TeyaPhp\Teya;
 use Kiralyta\TeyaPhp\TeyaClient;
 
-class StoreTest extends TestCase
+class PaymentTest extends TestCase
 {
-    public function test_list_store(): void
+    public function test_payment(): void
     {
         // $this->expectException(TeyaClientException::class);
 
-        $stores = Teya::message(
+        $payment = Teya::message(
             new TeyaClient(testing: true),
             $this->accessToken
-        )->stores();
+        )->payment(
+            storeId:    $this->storeId,
+            terminalId: $this->terminalId,
+            amount:     420,
+        );
 
-        $this->assertIsArray($stores);
+        $this->assertIsArray($payment);
     }
 }
