@@ -2,7 +2,8 @@
     "name": "kiralyta/teya-php",
     "description": "A PHP Api to integrate with Teya terminals.",
     "require": {
-        "guzzlehttp/guzzle": "^7.8"
+        "guzzlehttp/guzzle": "^7.8",
+        "nesbot/carbon": "^3.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^11.0",
@@ -10,7 +11,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Kiralyta\\TeyaPhp\\": "src/"
+            "Kiralyta\\TeyaPhp\\": "src/",
+            "Kiralyta\\TeyaPhp\\Tests\\": "tests/"
         }
     },
     "authors": [
