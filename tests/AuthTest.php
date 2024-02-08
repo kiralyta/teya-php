@@ -20,6 +20,8 @@ class AuthTest extends TestCase
 
     public function test_token(): void
     {
+        $this->auth();
+
         $token = (new TeyaClient())
             ->token(
                 clientId:     $this->clientId,
