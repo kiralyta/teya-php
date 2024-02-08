@@ -20,5 +20,7 @@ class CancelPaymentTest extends TestCase
         );
 
         $this->assertIsArray($payment);
+
+        dump($payment);
     }
 }

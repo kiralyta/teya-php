@@ -11,7 +11,11 @@ class AuthTest extends TestCase
 {
     public function test_authentication(): void
     {
-        $this->assertInstanceOf(AuthResponse::class, $response = $this->auth());
+        $response = $this->auth();
+
+        $this->assertInstanceOf(AuthResponse::class, $response);
+
+        dump($response);
     }
 
     public function test_token(): void
@@ -24,5 +28,7 @@ class AuthTest extends TestCase
             );
 
         $this->assertInstanceOf(TokenResponse::class, $token);
+
+        dump($token);
     }
 }

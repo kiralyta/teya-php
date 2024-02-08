@@ -20,5 +20,7 @@ class TerminalTest extends TestCase
         );
 
         $this->assertIsArray($terminals);
+
+        dump($terminals);
     }
 }

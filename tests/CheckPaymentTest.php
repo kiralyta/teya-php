@@ -20,5 +20,7 @@ class CheckPaymentTest extends TestCase
         );
 
         $this->assertIsArray($payment);
+
+        dump($payment);
     }
 }

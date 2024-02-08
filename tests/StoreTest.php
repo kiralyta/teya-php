@@ -18,5 +18,7 @@ class StoreTest extends TestCase
         )->stores();
 
         $this->assertIsArray($stores);
+
+        dump($stores);
     }
 }
