@@ -122,11 +122,11 @@ class TeyaClient
 
         } catch (RequestException $e) {
             throw new TeyaClientException(
-                $e->getResponse()->getBody()->getContents()
+                $e->getCode().': '.$e->getResponse()->getBody()->getContents()
             );
         } catch (ClientException $e) {
             throw new TeyaClientException(
-                $e->getMessage()
+                $e->getCode().': '.$e->getMessage()
             );
         }
 
