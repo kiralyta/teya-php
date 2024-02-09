@@ -2,22 +2,14 @@
 
 namespace Kiralyta\TeyaPhp\Tests;
 
+use Kiralyta\TeyaPhp\Exceptions\TeyaClientException;
 use Kiralyta\TeyaPhp\Responses\AuthResponse;
 use Kiralyta\TeyaPhp\Responses\TokenResponse;
 use Kiralyta\TeyaPhp\TeyaClient;
 
-class AuthTest extends TestCase
+class RefreshTokenTest extends TestCase
 {
-    public function test_authentication(): void
-    {
-        $response = $this->auth();
-
-        $this->assertInstanceOf(AuthResponse::class, $response);
-
-        dump($response);
-    }
-
-    public function test_token(): void
+    public function test_refresh_token(): void
     {
         $this->auth();
 
@@ -25,7 +17,8 @@ class AuthTest extends TestCase
             ->token(
                 clientId:     $this->clientId,
                 clientSecret: $this->clientSecret,
-                deviceCode:   $this->deviceCode
+                deviceCode:   $this->deviceCode,
+                refreshToken: $this->refreshToken
             );
 
         $this->assertInstanceOf(TokenResponse::class, $token);

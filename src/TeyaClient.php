@@ -65,16 +65,25 @@ class TeyaClient
     }
 
     public function token(
-        string $clientId,
-        string $clientSecret,
-        string $deviceCode
+        string  $clientId,
+        string  $clientSecret,
+        string  $deviceCode,
+        ?string $refreshToken = null
     ): TokenResponse {
+        $grantType = $refreshToken !== null
+            ? 'refresh_token'
+            : 'urn:ietf:params:oauth:grant-type:device_code';
+
         $form = [
             'client_id'     => $clientId,
             'client_secret' => $clientSecret,
-            'grant_type'    => 'urn:ietf:params:oauth:grant-type:device_code',
+            'grant_type'    => $grantType,
             'device_code'   => $deviceCode
         ];
+
+        if ($refreshToken !== null) {
+            $form['refresh_token'] = $refreshToken;
+        }
 
         $response = $this->request(
             uri:         $this->tokenUrl,
