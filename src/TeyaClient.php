@@ -58,9 +58,10 @@ class TeyaClient
         );
 
         return new AuthResponse(
-            userCode:   $response['user_code'],
-            deviceCode: $response['device_code'],
-            qrCode:     $response['qr_code'],
+            userCode:                $response['user_code'],
+            deviceCode:              $response['device_code'],
+            qrCode:                  $response['qr_code'],
+            verificationUrlComplete: $response['verification_url_complete'],
         );
     }
 
