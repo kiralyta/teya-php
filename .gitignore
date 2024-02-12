@@ -1,3 +1,2 @@
 vendor
-tests/client_id.test
-tests/client_secret.test
+tests/.env

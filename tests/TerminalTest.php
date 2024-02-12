@@ -14,9 +14,9 @@ class TerminalTest extends TestCase
 
         $terminals = Teya::message(
             new TeyaClient(testing: true),
-            $this->accessToken
+            $_ENV['ACCESS_TOKEN']
         )->terminals(
-            $this->storeId
+            $_ENV['STORE_ID']
         );
 
         $this->assertIsArray($terminals);

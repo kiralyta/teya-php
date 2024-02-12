@@ -14,9 +14,9 @@ class CheckPaymentTest extends TestCase
 
         $payment = Teya::message(
             new TeyaClient(testing: true),
-            $this->accessToken
+            $_ENV['ACCESS_TOKEN']
         )->checkPayment(
-            paymentRequestId: $this->paymentRequestId,
+            paymentRequestId: $_ENV['PAYMENT_REQUEST_ID'],
         );
 
         $this->assertIsArray($payment);

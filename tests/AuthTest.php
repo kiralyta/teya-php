@@ -25,7 +25,7 @@ class AuthTest extends TestCase
             ->token(
                 clientId:     $this->clientId,
                 clientSecret: $this->clientSecret,
-                deviceCode:   $this->deviceCode
+                deviceCode:   $_ENV['DEVICE_CODE']
             );
 
         $this->assertInstanceOf(TokenResponse::class, $token);

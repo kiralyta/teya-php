@@ -14,10 +14,10 @@ class PaymentTest extends TestCase
 
         $payment = Teya::message(
             new TeyaClient(testing: true),
-            $this->accessToken
+            $_ENV['ACCESS_TOKEN']
         )->payment(
-            storeId:    $this->storeId,
-            terminalId: $this->terminalId,
+            storeId:    $_ENV['STORE_ID'],
+            terminalId: $_ENV['TERMINAL_ID'],
             amount:     420,
         );
 

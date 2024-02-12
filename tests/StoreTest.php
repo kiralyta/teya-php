@@ -14,7 +14,7 @@ class StoreTest extends TestCase
 
         $stores = Teya::message(
             new TeyaClient(testing: true),
-            $this->accessToken
+            $_ENV['ACCESS_TOKEN']
         )->stores();
 
         $this->assertIsArray($stores);

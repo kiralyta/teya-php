@@ -14,9 +14,9 @@ class CancelPaymentTest extends TestCase
 
         $payment = Teya::message(
             new TeyaClient(testing: true),
-            $this->accessToken
+            $_ENV['ACCESS_TOKEN']
         )->cancelPayment(
-            paymentRequestId: $this->paymentRequestId,
+            paymentRequestId: $_ENV['PAYMENT_REQUEST_ID'],
         );
 
         $this->assertIsArray($payment);

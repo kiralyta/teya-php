@@ -15,10 +15,10 @@ class RefreshTokenTest extends TestCase
 
         $token = (new TeyaClient())
             ->token(
-                clientId:     $this->clientId,
-                clientSecret: $this->clientSecret,
-                deviceCode:   $this->deviceCode,
-                refreshToken: $this->refreshToken
+                clientId:     $_ENV['CLIENT_ID'],
+                clientSecret: $_ENV['CLIENT_SECRET'],
+                deviceCode:   $_ENV['DEVICE_CODE'],
+                refreshToken: $_ENV['REFRESH_TOKEN']
             );
 
         $this->assertInstanceOf(TokenResponse::class, $token);
