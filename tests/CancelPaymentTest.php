@@ -2,7 +2,6 @@
 
 namespace Kiralyta\TeyaPhp\Tests;
 
-use Kiralyta\TeyaPhp\Exceptions\TeyaClientException;
 use Kiralyta\TeyaPhp\Teya;
 use Kiralyta\TeyaPhp\TeyaClient;
 

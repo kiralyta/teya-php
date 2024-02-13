@@ -2,8 +2,6 @@
 
 namespace Kiralyta\TeyaPhp\Tests;
 
-use Kiralyta\TeyaPhp\Exceptions\TeyaClientException;
-use Kiralyta\TeyaPhp\Responses\AuthResponse;
 use Kiralyta\TeyaPhp\Responses\TokenResponse;
 use Kiralyta\TeyaPhp\TeyaClient;
 
