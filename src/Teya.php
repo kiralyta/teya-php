@@ -77,7 +77,7 @@ class Teya
     public function cancelPayment(string $paymentRequestId): array
     {
         return $this->client->message(
-            json:        ['status' => 'CANCELLING'],
+            json:        ['status' => 'CANCELLED'],
             uri:         "/pos-link/v1/payment-requests/{$paymentRequestId}",
             accessToken: $this->accessToken,
             method:      'patch'
