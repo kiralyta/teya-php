@@ -7,7 +7,8 @@ class Teya
     public function __construct(
         protected TeyaClient $client,
         protected string     $accessToken
-    )  {}
+    ) {
+    }
 
     public static function message(TeyaClient $client, string $accessToken): Teya
     {
@@ -43,8 +44,7 @@ class Teya
         int    $amount,
         int    $tip = 0,
         string $currency = 'HUF'
-    ): array
-    {
+    ): array {
         $json = [
             'requested_amount' => [
                 'amount'   => $amount,
@@ -77,8 +77,8 @@ class Teya
     public function cancelPayment(string $paymentRequestId): array
     {
         return $this->client->message(
-            json:        ['status' => 'CANCELLED'],
-            uri:         "/pos-link/v1/payment-requests/{$paymentRequestId}",
+            json:        ['status' => 'CANCELLING'],
+            uri:         "/pos-link/v2/payment-requests/{$paymentRequestId}",
             accessToken: $this->accessToken,
             method:      'patch'
         );
