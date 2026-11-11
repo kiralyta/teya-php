@@ -12,9 +12,9 @@ use Kiralyta\TeyaPhp\Responses\TokenResponse;
 
 class TeyaClient
 {
-    protected string $url = 'https://api.cloud.saltpay.co';
-    protected string $authUrl = 'https://identity.cloud.saltpay.co/oauth/v2/device';
-    protected string $tokenUrl = 'https://identity.cloud.saltpay.co/oauth/v2/oauth-token';
+    protected string $url = 'https://api.teya.com';
+    protected string $authUrl = 'https://id.teya.com/oauth/v2/device';
+    protected string $tokenUrl = 'https://id.teya.com/oauth/v2/oauth-token';
 
     protected Client $client;
     protected array  $lastRequest;

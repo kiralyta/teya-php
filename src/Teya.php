@@ -22,7 +22,7 @@ class Teya
     {
         return $this->client->message(
             json:        [],
-            uri:         '/pos-link/v1/stores',
+            uri:         '/poslink/v1/stores',
             accessToken: $this->accessToken,
             method:      'get'
         );
@@ -32,7 +32,7 @@ class Teya
     {
         return $this->client->message(
             json:        [],
-            uri:         "/pos-link/v1/stores/{$storeId}/terminals",
+            uri:         "/poslink/v2/stores/{$storeId}/terminals",
             accessToken: $this->accessToken,
             method:      'get'
         );
@@ -58,7 +58,7 @@ class Teya
 
         return $this->client->message(
             json:        $json,
-            uri:         "/pos-link/v1/payment-requests",
+            uri:         "/poslink/v1/payment-requests",
             accessToken: $this->accessToken,
             method:      'post'
         );
@@ -68,7 +68,7 @@ class Teya
     {
         return $this->client->message(
             json:        [],
-            uri:         "/pos-link/v1/payment-requests/{$paymentRequestId}",
+            uri:         "/poslink/v1/payment-requests/{$paymentRequestId}",
             accessToken: $this->accessToken,
             method:      'get'
         );
@@ -78,9 +78,30 @@ class Teya
     {
         return $this->client->message(
             json:        ['status' => 'CANCELLING'],
-            uri:         "/pos-link/v2/payment-requests/{$paymentRequestId}",
+            uri:         "/poslink/v2/payment-requests/{$paymentRequestId}",
             accessToken: $this->accessToken,
             method:      'patch'
+        );
+    }
+
+    /**
+     * Refunds a successful payment, without the card being needed on the terminal.
+     *
+     * The payment is identified by the gateway_payment_id of its payment request (tr_...), and the amount can not be
+     * more than what the payment took. V2 endpoint (v1 was removed): the gateway_payment_id goes in `transaction_id`.
+     */
+    public function refund(string $gatewayPaymentId, int $amount): array
+    {
+        $json = [
+            'amount'         => $amount,
+            'transaction_id' => $gatewayPaymentId,
+        ];
+
+        return $this->client->message(
+            json:        $json,
+            uri:         '/poslink/v2/refunds',
+            accessToken: $this->accessToken,
+            method:      'post'
         );
     }
 }
